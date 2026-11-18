@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Kelas XII.8 IPS 3 - Angkatan 2026</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            950: '#0a0f2c',
+                            900: '#0f172a',
+                            800: '#1e293b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Animasi transisi antar halaman yang halus */
+        .page-section {
+            display: none;
+            animation: fadeSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Garis konektor hierarki struktur kelas pada layar desktop */
+        @media (min-width: 768px) {
+            .hierarchy-line-down::after {
+                content: '';
+                position: absolute;
+                bottom: -24px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 2px;
+                height: 24px;
+                background-color: #c7d2fe;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-slate-50 text-slate-800 antialiased selection:bg-indigo-600 selection:text-white flex flex-col min-h-screen">
+
+    <!-- ==================== NAVBAR ==================== -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-sm"></header>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16 sm:h-20">
+            <!-- Logo & Nama Kelas -->
+            <div class="flex items-center gap-3 cursor-pointer" onclick="switchPage('beranda')">
+                <div
+                    class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-900 to-indigo-600 flex items-center justify-center text-white font-display font-bold text-lg shadow-md shadow-indigo-200">
+                    XII
+                </div>
+                <div>
+                    <h1 class="font-display font-bold text-slate-900 text-base sm:text-lg leading-tight">XII.8 IPS 3
+                    </h1>
+                    <p class="text-xs text-indigo-600 font-medium">Angkatan 2026 • SMAN 1 PARUNGKUDA</p>
+                </div>
+            </div>
+
+            <!-- Navigasi Desktop -->
+            <nav class="hidden md:flex items-center gap-2 bg-slate-100/80 p-1.5 rounded-2xl border border-slate-200/60">
+                <button onclick="switchPage('beranda')" id="nav-beranda"
+                    class="nav-btn active flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 bg-indigo-900 text-white shadow-sm">
+                    <i data-lucide="home" class="w-4 h-4"></i>
+                    Beranda & Struktur
+                </button>
+                <button onclick="switchPage('galeri')" id="nav-galeri"
+                    class="nav-btn flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-indigo-900 hover:bg-white/60 transition-all duration-200">
+                    <i data-lucide="images" class="w-4 h-4"></i>
+                    Galeri Kebersamaan
+                </button>
+                <button onclick="switchPage('siswa')" id="nav-siswa"
+                    class="nav-btn flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-indigo-900 hover:bg-white/60 transition-all duration-200">
+                    <i data-lucide="users" class="w-4 h-4"></i>
+                    36 Siswa
+                </button>
+            </nav>
+
+            <!-- Badge Tahun -->
+            <div
+                class="hidden sm:flex items-center gap-2 text-xs font-semibold text-indigo-900 bg-indigo-50 border border-indigo-100 px-3.5 py-2 rounded-full">
+                <span class="w-2 h-2 rounded-full bg-indigo-600 animate-pulse"></span>
+                2026
+            </div>
+        </div>
+
+        <!-- Navigasi Mobile (Tab Bar Responsif) -->
+        <div class="flex md:hidden items-center justify-between gap-1.5 pb-3 pt-1 overflow-x-auto">
+            <button onclick="switchPage('beranda')" id="mob-beranda"
+                class="mob-btn flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl text-xs font-semibold bg-indigo-900 text-white shadow-sm transition-all">
+                <i data-lucide="home" class="w-3.5 h-3.5"></i>
+                <span>Beranda</span>
+            </button>
+            <button onclick="switchPage('galeri')" id="mob-galeri"
+                class="mob-btn flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl text-xs font-semibold bg-slate-100 text-slate-600 transition-all">
+                <i data-lucide="images" class="w-3.5 h-3.5"></i>
+                <span>Galeri</span>
+            </button>
+            <button onclick="switchPage('siswa')" id="mob-siswa"
+                class="mob-btn flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl text-xs font-semibold bg-slate-100 text-slate-600 transition-all">
+                <i data-lucide="users" class="w-3.5 h-3.5"></i>
+                <span>36 Siswa</span>
+            </button>
+        </div>
+    </div>
+    </header>
+
+    <!-- ==================== KONTEN UTAMA ==================== -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+
+        <!-- =========================================================
+             HALAMAN 1: BERANDA & STRUKTUR ORGANISASI KELAS
+        ========================================================== -->
+        <section id="page-beranda" class="page-section active space-y-14">
+
+            <!-- Hero Section: Foto Sekelas -->
+            <div class="relative rounded-3xl overflow-hidden bg-indigo-950 shadow-xl border border-indigo-900/20">
+                <!-- Gambar Foto Sekelas -->
+                <div class="relative h-[380px] sm:h-[480px] lg:h-[540px] w-full">
+                    <img src="foto-sekelas.jpg/WhatsApp Image 2026-11-10 at 13.46.18.jpeg"
+                        onerror="this.src='https://placehold.co/1600x800/1e1b4b/e0e7ff?text=Foto+Sekelas+XII.8++1+-+Angkatan+2026'"
+                        alt="Foto Sekelas XII.8 IPS 3" class="w-full h-full object-cover object-center opacity-85">
+                    <!-- Overlay Gradasi Biru Dongker -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-indigo-950 via-indigo-950/60 to-transparent">
+                    </div>
+                </div>
+
+                <!-- Teks Overlay di Hero -->
+                <div class="absolute bottom-0 inset-x-0 p-6 sm:p-10 lg:p-12 text-white">
+                    <div class="max-w-3xl space-y-3 sm:space-y-4">
+                        <span
+                            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-indigo-500/30 border border-indigo-300/30 backdrop-blur-md text-indigo-100">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-300"></i>
+                            Solidaritas Tanpa Batas • 36 Cerita Satu Tujuan
+                        </span>
+                        <h2
+                            class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+                            Kelas XII.8 IPS 3 <span class="text-indigo-300">Angkatan 2026</span>
+                        </h2>
+                        <p class="text-sm sm:text-base text-slate-200 leading-relaxed max-w-2xl">
+                            Selamat datang di ruang digital keluarga besar XII.8 IPS 3. Tempat merangkum tawa di sela
+                            praktikum, perjuangan menuju perguruan tinggi impian, dan kenangan indah masa putih abu-abu.
+                        </p>
+                        <div class="pt-2 flex flex-wrap gap-3">
+                            <button onclick="switchPage('siswa')"
+                                class="inline-flex items-center gap-2 bg-white text-indigo-950 hover:bg-indigo-50 font-semibold text-sm px-5 py-3 rounded-xl shadow-lg transition-all">
+                                <i data-lucide="users" class="w-4 h-4 text-indigo-600"></i>
+                                Kenali 36 Siswa
+                            </button>
+                            <button onclick="switchPage('galeri')"
+                                class="inline-flex items-center gap-2 bg-indigo-900/70 hover:bg-indigo-800/80 text-white border border-indigo-400/30 backdrop-blur-md font-semibold text-sm px-5 py-3 rounded-xl transition-all">
+                                <i data-lucide="camera" class="w-4 h-4 text-indigo-300"></i>
+                                Lihat Momen Bersama
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bagan Struktur Organisasi Kelas -->
+            <div class="space-y-8">
+                <div class="text-center max-w-2xl mx-auto space-y-2">
+                    <span
+                        class="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">Kepengurusan
+                        Kelas</span>
+                    <h3 class="font-display text-2xl sm:text-3xl font-bold text-slate-900">Struktur Organisasi XII.8 IPS
+                        3
+                    </h3>
+                    <p class="text-sm text-slate-500">Sinergi pengurus kelas dalam menjaga kekompakan, kedisiplinan, dan
+                        kenyamanan belajar bersama.</p>
+                </div>
+
+                <!-- Hierarki Visual Struktur -->
+                <div class="max-w-4xl mx-auto space-y-6 md:space-y-8">
+
+                    <!-- BARIS 1: WALI KELAS (Posisi Paling Atas) -->
+                    <div class="flex justify-center">
+                        <div
+                            class="relative hierarchy-line-down w-full max-w-sm bg-gradient-to-b from-indigo-950 to-indigo-900 text-white rounded-3xl p-6 shadow-xl shadow-indigo-900/15 border border-indigo-800 text-center">
+                            <div
+                                class="inline-block px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/30 text-xs font-bold tracking-wide uppercase mb-4">
+                                Wali Kelas
+                            </div>
+                            <div
+                                class="w-24 h-24 mx-auto rounded-2xl overflow-hidden ring-4 ring-indigo-400/30 shadow-md mb-4 bg-indigo-800">
+                                <img src="walikelas.jpg/WhatsApp Image 2026-11-14 at 20.28.49.jpeg"
+                                    onerror="this.src='https://placehold.co/300x300/312e81/ffffff?text=Wali+Kelas'"
+                                    alt="Wali Kelas" class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="font-display font-bold text-lg text-white">Tini Sukartini, S.Pd
+                            </h4>
+                            <p class="text-xs text-indigo-200 mt-1">Guru Pembimbing & Pengampu PPKN & B.Daerah</p>
+                        </div>
+                    </div>
+
+                    <!-- Garis Penghubung Horizontal Dekoratif -->
+                    <div class="hidden md:block w-1/2 mx-auto border-t-2 border-indigo-200"></div>
+
+                    <!-- BARIS 2: KETUA KELAS & WAKIL KETUA KELAS -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                        <!-- Ketua Kelas -->
+                        <div
+                            class="bg-white rounded-2xl p-5 sm:p-6 shadow-sm hover:shadow-md transition-all border border-slate-200/80 flex items-center gap-4 sm:gap-5 relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-indigo-700"></div>
+                            <img src="struktur-kelas.jpg/fikri(21).jpg.jpeg"
+                                onerror="this.src='https://placehold.co/300x300/1e1b4b/ffffff?text=Ketua'"
+                                alt="Ketua Kelas"
+                                class="w-20 h-20 rounded-2xl object-cover flex-shrink-0 ring-2 ring-indigo-100">
+                            <div>
+                                <span
+                                    class="inline-block px-2.5 py-0.5 rounded-md bg-indigo-900 text-white text-[11px] font-bold uppercase tracking-wider mb-1.5">
+                                    Ketua Kelas
+                                </span>
+                                <h4 class="font-display font-bold text-base sm:text-lg text-slate-900">Muhammad Fikri Al
+                                    Janaby
+                                </h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Absen 21</p>
+                            </div>
+                        </div>
+
+                        <!-- Wakil Ketua Kelas -->
+                        <div
+                            class="bg-white rounded-2xl p-5 sm:p-6 shadow-sm hover:shadow-md transition-all border border-slate-200/80 flex items-center gap-4 sm:gap-5 relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-indigo-500"></div>
+                            <img src="struktur-kelas.jpg/alviansyah(2).jpg.jpeg"
+                                src='https://placehold.co/300x300/3730a3/ffffff?text=Wakil'"
+                                alt=" Wakil Ketua Kelas"
+                                class="w-20 h-20 rounded-2xl object-cover flex-shrink-0 ring-2 ring-indigo-100">
+                            <div>
+                                <span
+                                    class="inline-block px-2.5 py-0.5 rounded-md bg-indigo-100 text-indigo-800 text-[11px] font-bold uppercase tracking-wider mb-1.5">
+                                    Wakil Ketua Kelas
+                                </span>
+                                <h4 class="font-display font-bold text-base sm:text-lg text-slate-900">Alviansyah</h4>
+
+                                <p class="text-xs text-slate-500 mt-0.5">Absen 2</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BARIS 3: SEKRETARIS 1 & SEKRETARIS 2 -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                        <!-- Sekretaris 1 -->
+                        <div
+                            class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-all border border-slate-200/80 flex items-center gap-4 relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-sky-600"></div>
+                            <img src="struktur-kelas.jpg/firlana(10).jpeg"
+                                onerror="this.src='https://placehold.co/300x300/0284c7/ffffff?text=Sek+1'"
+                                alt="Sekretaris 1"
+                                class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover flex-shrink-0 ring-2 ring-sky-100">
+                            <div>
+                                <span
+                                    class="inline-block px-2.5 py-0.5 rounded-md bg-sky-50 text-sky-700 border border-sky-200/60 text-[11px] font-bold uppercase tracking-wider mb-1">
+                                    Sekretaris
+                                </span>
+                                <h4 class="font-display font-bold text-base text-slate-900">Firlana Maulidina S.</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Absen 10</p>
+                            </div>
+                        </div>
+
+                        <!-- Sekretaris 2 -->
+                        <div
+                            class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-all border border-slate-200/80 flex items-center gap-4 relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-sky-400"></div>
+                            <img src="struktur-kelas.jpg/hani(12).jpeg"
+                                onerror="this.src='https://placehold.co/300x300/38bdf8/ffffff?text=Sek+2'"
+                                alt="Sekretaris 2"
+                                class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover flex-shrink-0 ring-2 ring-sky-100">
+                            <div>
+                                <span
+                                    class="inline-block px-2.5 py-0.5 rounded-md bg-sky-50 text-sky-700 border border-sky-200/60 text-[11px] font-bold uppercase tracking-wider mb-1">
+                                    Sekretaris
+                                </span>
+                                <h4 class="font-display font-bold text-base text-slate-900">Hani Sartika</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Absen 12</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BARIS 4: BENDAHARA 1 & BENDAHARA 2 -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                        <!-- Bendahara 1 -->
+                        <div
+                            class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-all border border-slate-200/80 flex items-center gap-4 relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-emerald-600"></div>
+                            <img src="struktur-kelas.jpg/karisma(16).jpeg"
+                                onerror="this.src='https://placehold.co/300x300/059669/ffffff?text=Ben+1'"
+                                alt="Bendahara 1"
+                                class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover flex-shrink-0 ring-2 ring-emerald-100">
+                            <div>
+                                <span
+                                    class="inline-block px-2.5 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200/60 text-[11px] font-bold uppercase tracking-wider mb-1">
+                                    Bendahara
+                                </span>
+                                <h4 class="font-display font-bold text-base text-slate-900">Karisma Putri Hidayat
+                                </h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Absen 16</p>
+                            </div>
+                        </div>
+
+                        <!-- Bendahara 2 -->
+                        <div
+                            class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-all border border-slate-200/80 flex items-center gap-4 relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-emerald-400"></div>
+                            <img src="struktur-kelas.jpg/WhatsApp Image 2026-11-14 at 21.20.37.jpeg"
+                                onerror="this.src='https://placehold.co/300x300/34d399/ffffff?text=Ben+2'"
+                                alt="Bendahara 2"
+                                class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover flex-shrink-0 ring-2 ring-emerald-100">
+                            <div>
+                                <span
+                                    class="inline-block px-2.5 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200/60 text-[11px] font-bold uppercase tracking-wider mb-1">
+                                    Bendahara
+                                </span>
+                                <h4 class="font-display font-bold text-base text-slate-900">Yanti Febrianti</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Absen 34</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             HALAMAN 2: GALERI KEBERSAMAAN (DENGAN LIGHTBOX)
+        ========================================================== -->
+        <section id="page-galeri" class="page-section space-y-8">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200 pb-6">
+                <div class="space-y-1.5">
+                    <span
+                        class="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">Jejak
+                        Kenangan</span>
+                    <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900">Galeri Kebersamaan</h2>
+                    <p class="text-sm text-slate-500">Klik pada foto untuk memperbesar dan membaca kisah di balik setiap
+                        momen.</p>
+                </div>
+                <div
+                    class="text-xs font-medium text-slate-500 bg-white px-4 py-2 rounded-xl border border-slate-200 shadow-sm">
+                    Menampilkan <span class="font-bold text-indigo-900" id="gallery-count">8</span> Momen Terpilih
+                </div>
+            </div>
+
+            <!-- Grid Galeri Foto (Masonry / Variasi Rasio Aspek Estetis) -->
+            <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Item galeri di-render oleh JavaScript -->
+            </div>
+        </section>
+
+        <!-- =========================================================
+             HALAMAN 3: PROFIL 36 SISWA (DENGAN SEARCH & EDIT)
+        ========================================================== -->
+        <section id="page-siswa" class="page-section space-y-8">
+            <!-- Header & Search Bar -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-6">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <span
+                            class="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">Direktori
+                            Anggota</span>
+                        <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900">Keluarga Besar 36 Siswa
+                        </h2>
+                        <p class="text-sm text-slate-500">Daftar lengkap siswa Absen 01 – 36. Klik ikon pensil pada
+                            kartu untuk mengubah nama, kutipan, atau foto.</p>
+                    </div>
+
+                    <!-- Search Bar -->
+                    <div class="relative w-full lg:w-96">
+                        <i data-lucide="search"
+                            class="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2"></i>
+                        <input type="text" id="search-student" oninput="filterStudents()"
+                            placeholder="Cari nama siswa atau nomor absen..."
+                            class="w-full pl-11 pr-10 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:bg-white transition-all">
+                        <button id="clear-search" onclick="resetSearch()"
+                            class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1">
+                            <i data-lucide="x" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Info Bar -->
+                <div
+                    class="flex flex-wrap items-center justify-between gap-2 pt-4 border-t border-slate-100 text-xs text-slate-500">
+                    <p>Menampilkan <span id="student-count" class="font-bold text-indigo-900">36</span> dari 36 siswa
+                    </p>
+                    <button onclick="resetAllStudentsData()"
+                        class="inline-flex items-center gap-1.5 text-slate-500 hover:text-rose-600 font-medium transition-colors">
+                        <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                        Reset Data ke Default
+                    </button>
+                </div>
+            </div>
+
+            <!-- Grid Kartu 36 Siswa -->
+            <div id="students-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                <!-- Kartu 36 siswa akan di-generate melalui JS -->
+            </div>
+
+            <!-- State Kosong Jika Pencarian Tidak Ditemukan -->
+            <div id="empty-search" class="hidden text-center py-16 bg-white rounded-3xl border border-slate-200">
+                <div
+                    class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="user-x" class="w-8 h-8"></i>
+                </div>
+                <h3 class="font-display font-bold text-lg text-slate-900">Siswa tidak ditemukan</h3>
+                <p class="text-sm text-slate-500 mt-1">Coba gunakan kata kunci nama lain atau nomor absen (01 - 36).</p>
+                <button onclick="resetSearch()"
+                    class="mt-4 px-4 py-2 bg-indigo-900 text-white text-xs font-semibold rounded-xl hover:bg-indigo-800 transition-colors">
+                    Tampilkan Semua Siswa
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-indigo-950 text-indigo-200 border-t border-indigo-900 mt-16">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+            <div class="flex items-center gap-2.5">
+                <span
+                    class="w-7 h-7 rounded-lg bg-indigo-800 text-white font-display font-bold flex items-center justify-center">XII</span>
+                <span class="font-semibold text-white">Kelas XII 8 • Angkatan 2026</span>
+            </div>
+            <p class="text-indigo-300/80 text-center sm:text-right">
+                Dibuat oleh kelompok 5 menjadikan foto sebagai kenangan.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ==================== MODAL LIGHTBOX GALERI ==================== -->
+    <div id="lightbox-modal"
+        class="fixed inset-0 z-50 hidden bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
+        onclick="closeLightbox(event)">
+        <div class="relative max-w-4xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl animate-[fadeSlideUp_0.25s_ease-out]"
+            onclick="event.stopPropagation()">
+            <!-- Tombol Tutup -->
+            <button onclick="closeLightbox()"
+                class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white flex items-center justify-center backdrop-blur-sm transition-all">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <!-- Tombol Navigasi Prev / Next -->
+            <button onclick="navigateLightbox(-1)"
+                class="absolute left-3 top-1/3 sm:top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/80 hover:bg-white text-slate-900 shadow-lg flex items-center justify-center transition-all">
+                <i data-lucide="chevron-left" class="w-5 h-5"></i>
+            </button>
+            <button onclick="navigateLightbox(1)"
+                class="absolute right-3 top-1/3 sm:top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/80 hover:bg-white text-slate-900 shadow-lg flex items-center justify-center transition-all">
+                <i data-lucide="chevron-right" class="w-5 h-5"></i>
+            </button>
+
+            <!-- Gambar Besar -->
+            <div class="bg-slate-900 max-h-[65vh] flex items-center justify-center overflow-hidden">
+                <img id="lightbox-img" src="" alt="Preview Momen" class="w-full h-full max-h-[65vh] object-contain">
+            </div>
+
+            <!-- Keterangan Lengkap -->
+            <div class="p-6 sm:p-7 bg-white">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                    <span id="lightbox-date"
+                        class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">
+                        <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                        <span>Tanggal</span>
+                    </span>
+                    <span id="lightbox-location" class="text-xs font-medium text-slate-400">Lokasi</span>
+                </div>
+                <h3 id="lightbox-title" class="font-display font-bold text-xl text-slate-900">Judul Kegiatan</h3>
+                <p id="lightbox-desc" class="text-sm text-slate-600 mt-2 leading-relaxed">Deskripsi kegiatan...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== MODAL EDIT PROFIL SISWA ==================== -->
+    <div id="edit-modal"
+        class="fixed inset-0 z-50 hidden bg-slate-950/75 backdrop-blur-sm flex items-center justify-center p-4"
+        onclick="closeEditModal(event)">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl space-y-5 animate-[fadeSlideUp_0.25s_ease-out]"
+            onclick="event.stopPropagation()">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                <div>
+                    <span id="edit-absen-badge"
+                        class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-0.5 rounded-md">Absen 01</span>
+                    <h3 class="font-display font-bold text-lg text-slate-900 mt-1">Edit Profil Siswa</h3>
+                </div>
+                <button onclick="closeEditModal()"
+                    class="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+            <form id="edit-student-form" onsubmit="saveStudentEdit(event)" class="space-y-4">
+                <input type="hidden" id="edit-student-id">
+
+                <!-- Preview & Upload Foto -->
+                <div class="flex items-center gap-4 bg-slate-50 p-3.5 rounded-2xl border border-slate-200/70">
+                    <img id="edit-preview-img" src="" alt="Preview"
+                        class="w-16 h-16 rounded-2xl object-cover ring-2 ring-indigo-200 bg-white">
+                    <div class="flex-1 space-y-1.5">
+                        <label class="block text-xs font-semibold text-slate-700">Ganti Foto Profil</label>
+                        <label
+                            class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-900 hover:bg-indigo-800 text-white text-xs font-semibold rounded-xl cursor-pointer transition-colors">
+                            <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                            Pilih Foto dari Perangkat
+                            <input type="file" id="edit-photo-file" accept="image/*" class="hidden"
+                                onchange="handlePhotoUpload(event)">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Input URL Foto Alternatif -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Atau Tempel URL Foto</label>
+                    <input type="url" id="edit-photo-url"
+                        oninput="document.getElementById('edit-preview-img').src = this.value" placeholder="https://..."
+                        class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:bg-white">
+                </div>
+
+                <!-- Input Nama Lengkap -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Lengkap Siswa</label>
+                    <input type="text" id="edit-name" required
+                        class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:bg-white">
+                </div>
+
+                <!-- Input Hobi / Kutipan -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Hobi / Kutipan Singkat</label>
+                    <input type="text" id="edit-quote" maxlength="70" required
+                        class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:bg-white">
+                </div>
+
+                <div class="flex items-center justify-end gap-2.5 pt-3 border-t border-slate-100">
+                    <button type="button" onclick="closeEditModal()"
+                        class="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition-colors">
+                        Batal
+                    </button>
+                    <button type="submit"
+                        class="px-5 py-2.5 rounded-xl text-xs font-semibold bg-indigo-900 hover:bg-indigo-800 text-white shadow-md shadow-indigo-900/20 transition-all">
+                        Simpan Perubahan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+    <script>
+        // 1. DATA GALERI KEBERSAMAAN (8 Momen Foto Bersama)
+        const galleryData = [
+            {
+                id: 1,
+                title: "Merayakan Hari Batik Nasional",
+                date: "02 oktober 2026",
+                location: "Lapang Takraw",
+                aspect: "aspect-[4/3]",
+                img: "foto-kenangan.jpg/foto8.jpg.jpeg",
+                desc: "Momen yang kita ambil saat jam pertama di lapang takraw dalam rangka memperingati Hari Batik Nasional."
+            },
+            {
+                id: 2,
+                title: "Mapel Terakhir",
+                date: "28 September 2026",
+                location: "Ruang Multimedia",
+                aspect: "aspect-[4/3]",
+                img: "foto-kenangan.jpg/foto7.jpg.jpeg",
+                desc: "Suasana seru dan kebersamaan sekelas di ruang multimedia saat jam pelajaran terakhir."
+            },
+            {
+                id: 3,
+                title: "Pemilihan Ketua OSIS",
+                date: "27 Agustus 2026",
+                location: "Gedung Seni Sekolah",
+                aspect: "aspect-[4/3]",
+                img: "foto-kenangan.jpg/foto6.jpg.jpeg",
+                desc: "Antusiasme dan kekompakan saat mengikuti kegiatan pemilihan ketua OSIS di sekolah."
+            },
+            {
+                id: 4,
+                title: "Merayakan Ulang Tahun",
+                date: "07 Agustus 2026",
+                location: "Rumah Wali Kelas",
+                aspect: "aspect-[4/3]",
+                img: "foto-kenangan.jpg/foto5.jpg.jpeg",
+                desc: "Kejutan spesial dan perayaan ulang tahun Wali Kelas pada tanggal 7 Agustus 2026."
+            },
+            {
+                id: 5,
+                title: "Sesi Foto Ijazah",
+                date: "20 Agustus 2026",
+                location: "Ruang Pertemuan Sekolah",
+                aspect: "aspect-[4/3]",
+                img: "foto-kenangan.jpg/foto4.jpg.jpeg",
+                desc: "Potret resmi dan rapi saat sesi pengambilan foto ijazah bersama teman sekelas dan Wali Kelas."
+            },
+            {
+                id: 6,
+                title: "Ujian Praktik Seni Budaya",
+                date: "07 November 2025",
+                location: "Gedung Seni Sekolah",
+                aspect: "aspect-[4/3]",
+                img: "foto-kenangan.jpg/foto3.jpg.jpeg",
+                desc: "Sesi Potret bersama setelah selesai menampilkan projek tugas ujian praktik menari seni budaya."
+            },
+            {
+                id: 7,
+                title: "Sebelum Sesi Foto Ijazah",
+                date: "20 Agustus 2026",
+                location: "SMAN 1 PARUNGKUDA",
+                aspect: "aspect-[4/5]",
+                img: "foto-kenangan.jpg/foto2.jpg.jpeg",
+                desc: "Keseruan dan kekompakan anak-anak kelas saat bersiap-siap sebelum memulai sesi foto ijazah pada tanggal 20 Agustus 2026."
+            },
+            {
+                id: 8,
+                title: "Gathering Marga 8",
+                date: "24 Juli 2026",
+                location: "Lapangan Upacara",
+                aspect: "aspect-[4/3]",
+                img: "foto-kenangan.jpg/foto1.jpg.jpeg",
+                desc: "Satu frame penuh cerita dari Marga 8. Beda warna seragam, tetap satu tujuan dan satu kebersamaan."
+            }
+        ];
+
+        // 2. DATA 36 SISWA INDONESIA (ABSEN 01 - 36)
+        const defaultStudents = [
+            { absen: "01", name: "Alexa Eltaviasni", photo: "siswa12.8.jpg/foto1.jpg.jpeg" },
+            { absen: "02", name: "Alviansyah", photo: "siswa12.8.jpg/foto2.jpg.jpeg" },
+            { absen: "03", name: "Amelia", photo: "siswa12.8.jpg/foto3.jpg.jpeg" },
+            { absen: "04", name: "Anisa Nur Fadila", photo: "siswa12.8.jpg/foto4.jpg.jpeg" },
+            { absen: "05", name: "Arya Budiman", photo: "siswa12.8.jpg/foto5.jpg.jpeg" },
+            { absen: "06", name: "Azzahra Pitri Yulianti", photo: "siswa12.8.jpg/foto6.jpg.jpeg" },
+            { absen: "07", name: "Billy Anugrah Febrian", photo: "siswa12.8.jpg/foto7.jpg.jpeg" },
+            { absen: "08", name: "Callysta Vala Wibiksana", photo: "siswa12.8.jpg/foto8.jpg.jpeg" },
+            { absen: "09", name: "Desica Andayani", photo: "siswa12.8.jpg/foto9.jpg.jpeg" },
+            { absen: "10", name: "Firlana Maulidina S.", photo: "siswa12.8.jpg/foto10.jpg.jpeg" },
+            { absen: "11", name: "Fitri Nurmalasari", photo: "siswa12.8.jpg/foto11.jpg.jpeg" },
+            { absen: "12", name: "Hani Sartika", photo: "siswa12.8.jpg/foto12.jpg.jpeg" },
+            { absen: "13", name: "Helwina Nuriyah", photo: "siswa12.8.jpg/foto13.jpg.jpeg" },
+            { absen: "14", name: "Iklas", photo: "siswa12.8.jpg/foto14.jpg.jpeg" },
+            { absen: "15", name: "Ilham Fauzi Rahmawan", photo: "siswa12.8.jpg/foto15.jpg.jpeg" },
+            { absen: "16", name: "Karisma Putri Hidayat", photo: "siswa12.8.jpg/foto16.jpg.jpeg" },
+            { absen: "17", name: "M. Alpin Maulana", photo: "siswa12.8.jpg/WhatsApp Image 2026-11-14 at 21.12.16 (2).jpeg" },
+            { absen: "18", name: "M. Ryan Alhafidz", photo: "siswa12.8.jpg/foto18.jpg.jpeg" },
+            { absen: "19", name: "Maesya Putri Sakinah", photo: "siswa12.8.jpg/foto19.jpg.jpeg" },
+            { absen: "20", name: "Muhammad Fadli", photo: "siswa12.8.jpg/foto20.jpg.jpeg" },
+            { absen: "21", name: "Muhammad Fikri Al Janaby", photo: "siswa12.8.jpg/foto21.jpg.jpeg" },
+            { absen: "22", name: "Neng Sifa Ramadani", photo: "siswa12.8.jpg/foto22.jpg.jpeg" },
+            { absen: "23", name: "Nur Keyza Amalya", photo: "siswa12.8.jpg/foto23.jpg.jpeg" },
+            { absen: "24", name: "Puput Putriyani", photo: "siswa12.8.jpg/foto24.jpg.jpeg" },
+            { absen: "25", name: "Rayi Azhar Alamsyah", photo: "siswa12.8.jpg/foto25.jpg.jpeg" },
+            { absen: "26", name: "Rena Nur Anggraeni", photo: "siswa12.8.jpg/foto26.jpg.jpeg" },
+            { absen: "27", name: "Rianti Artikasari", photo: "siswa12.8.jpg/foto27.jpg.jpeg" },
+            { absen: "28", name: "Rizky Rhasha Suhendar", photo: "siswa12.8.jpg/foto28.jpg.jpeg" },
+            { absen: "29", name: "Septiani Ramadhan", photo: "siswa12.8.jpg/foto29.jpg.jpeg" },
+            { absen: "30", name: "Sinsi Aulia Putri", photo: "siswa12.8.jpg/foto30.jpg.jpeg" },
+            { absen: "31", name: "Siti Rahmah Fauziyah", photo: "siswa12.8.jpg/foto31.jpg.jpeg" },
+            { absen: "32", name: "Syadiansyah", photo: "siswa12.8.jpg/foto32.jpg.jpeg" },
+            { absen: "33", name: "Wita Juniyanti", photo: "siswa12.8.jpg/foto33.jpg.jpeg" },
+            { absen: "34", name: "Yanti Febrianti", photo: "siswa12.8.jpg/foto34.jpg.jpeg" },
+            { absen: "35", name: "Yuli", photo: "siswa12.8.jpg/foto35.jpg.jpeg" },
+            { absen: "36", name: "Achmad Reghan Albion", photo: "siswa12.8.jpg/foto36.jpg.jpeg" }
+        ];
+
+        // State aplikasi (menggunakan localStorage agar perubahan edit tersimpan otomatis)
+        let studentsData = JSON.parse(localStorage.getItem('xii_ips_3_students')) || JSON.parse(JSON.stringify(defaultStudents));
+        let currentLightboxIndex = 0;
+
+        // ==================== NAVIGASI ANTAR HALAMAN ====================
+        function switchPage(pageName) {
+            // Sembunyikan semua halaman
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Tampilkan halaman target
+            const targetSection = document.getElementById(`page-${pageName}`);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            // Update tombol navigasi desktop
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-indigo-900', 'text-white', 'shadow-sm');
+                btn.classList.add('text-slate-600', 'hover:text-indigo-900', 'hover:bg-white/60');
+            });
+            const activeDesktopBtn = document.getElementById(`nav-${pageName}`);
+            if (activeDesktopBtn) {
+                activeDesktopBtn.classList.remove('text-slate-600', 'hover:text-indigo-900', 'hover:bg-white/60');
+                activeDesktopBtn.classList.add('bg-indigo-900', 'text-white', 'shadow-sm');
+            }
+
+            // Update tombol navigasi mobile
+            document.querySelectorAll('.mob-btn').forEach(btn => {
+                btn.classList.remove('bg-indigo-900', 'text-white', 'shadow-sm');
+                btn.classList.add('bg-slate-100', 'text-slate-600');
+            });
+            const activeMobBtn = document.getElementById(`mob-${pageName}`);
+            if (activeMobBtn) {
+                activeMobBtn.classList.remove('bg-slate-100', 'text-slate-600');
+                activeMobBtn.classList.add('bg-indigo-900', 'text-white', 'shadow-sm');
+            }
+
+            // Scroll halus ke atas
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ==================== RENDER GALERI & LIGHTBOX ====================
+        function renderGallery() {
+            const grid = document.getElementById('gallery-grid');
+            grid.innerHTML = galleryData.map((item, index) => `
+                <div onclick="openLightbox(${index})" class="group cursor-pointer bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                    <div class="relative ${item.aspect} w-full overflow-hidden bg-slate-100">
+                        <img 
+                            src="${item.img}" 
+                            onerror="this.src='https://placehold.co/800x600/1e1b4b/e0e7ff?text=${encodeURIComponent(item.title)}'"
+                            alt="${item.title}" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+                        
+                        <!-- Badge Tanggal -->
+                        <div class="absolute top-4 left-4">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-indigo-950 backdrop-blur-md shadow-sm">
+                                <i data-lucide="calendar" class="w-3 h-3 text-indigo-600"></i>
+                                ${item.date}
+                            </span>
+                        </div>
+
+                        <!-- Ikon Zoom saat Hover -->
+                        <div class="absolute bottom-4 right-4 w-9 h-9 rounded-full bg-white/90 text-indigo-900 flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 shadow-md">
+                            <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-display font-bold text-base sm:text-lg text-slate-900 group-hover:text-indigo-700 transition-colors">
+                                ${item.title}
+                            </h3>
+                            <p class="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
+                                ${item.desc}
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-medium text-slate-400">
+                            <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-indigo-500"></i> ${item.location}</span>
+                            <span class="text-indigo-600 font-semibold group-hover:underline">Lihat detail →</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            updateLightboxContent();
+            const modal = document.getElementById('lightbox-modal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function updateLightboxContent() {
+            const item = galleryData[currentLightboxIndex];
+            const imgEl = document.getElementById('lightbox-img');
+            imgEl.src = item.img;
+            imgEl.onerror = () => {
+                imgEl.src = `https://placehold.co/1200x800/1e1b4b/e0e7ff?text=${encodeURIComponent(item.title)}`;
+            };
+            document.getElementById('lightbox-date').querySelector('span').textContent = item.date;
+            document.getElementById('lightbox-location').textContent = item.location;
+            document.getElementById('lightbox-title').textContent = item.title;
+            document.getElementById('lightbox-desc').textContent = item.desc;
+        }
+
+        function navigateLightbox(step) {
+            currentLightboxIndex = (currentLightboxIndex + step + galleryData.length) % galleryData.length;
+            updateLightboxContent();
+        }
+
+        function closeLightbox(event) {
+            if (!event || event.target.id === 'lightbox-modal') {
+                document.getElementById('lightbox-modal').classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // ==================== RENDER & FITUR 36 SISWA ====================
+        function renderStudents(list = studentsData) {
+            const grid = document.getElementById('students-grid');
+            const emptyState = document.getElementById('empty-search');
+            const countLabel = document.getElementById('student-count');
+
+            countLabel.textContent = list.length;
+
+            if (list.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            grid.innerHTML = list.map(student => `
+                <div class="group bg-white rounded-3xl p-5 border border-slate-200/80 shadow-sm hover:shadow-lg hover:border-indigo-200 transition-all duration-300 flex flex-col justify-between relative">
+                    
+                    <!-- Header Kartu: Nomor Absen & Tombol Edit -->
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-indigo-950 text-white tracking-wide">
+                            Absen ${student.absen}
+                        </span>
+                        <button 
+                            onclick="openEditModal('${student.absen}')" 
+                            title="Edit Profil Siswa"
+                            class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-indigo-100 text-slate-500 hover:text-indigo-700 flex items-center justify-center transition-colors"
+                        >
+                            <i data-lucide="pencil" class="w-3.5 h-3.5"></i>
+                        </button>
+                    </div>
+
+                    <!-- Foto & Nama -->
+                    <div class="text-center space-y-3">
+                        <div class="relative w-24 h-24 mx-auto">
+                            <img 
+                                src="${student.photo}" 
+                                onerror="this.src='https://placehold.co/300x300/e0e7ff/1e1b4b?text=Absen+${student.absen}'"
+                                alt="${student.name}" 
+                                class="w-full h-full rounded-2xl object-cover ring-4 ring-slate-50 group-hover:ring-indigo-100 transition-all shadow-sm"
+                            >
+                        </div>
+                        <div>
+                            <h3 class="font-display font-bold text-base text-slate-900 leading-snug group-hover:text-indigo-900 transition-colors">
+                                ${student.name}
+                            </h3>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        function filterStudents() {
+            const query = document.getElementById('search-student').value.toLowerCase().trim();
+            const clearBtn = document.getElementById('clear-search');
+
+            if (query.length > 0) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
+            }
+
+            const filtered = studentsData.filter(s =>
+                s.name.toLowerCase().includes(query) ||
+                s.absen.includes(query) ||
+                s.quote.toLowerCase().includes(query)
+            );
+            renderStudents(filtered);
+        }
+
+        function resetSearch() {
+            document.getElementById('search-student').value = '';
+            document.getElementById('clear-search').classList.add('hidden');
+            renderStudents(studentsData);
+        }
+
+        // ==================== FITUR EDIT PROFIL SISWA ====================
+        function openEditModal(absen) {
+            const student = studentsData.find(s => s.absen === absen);
+            if (!student) return;
+
+            document.getElementById('edit-student-id').value = student.absen;
+            document.getElementById('edit-absen-badge').textContent = `Absen ${student.absen}`;
+            document.getElementById('edit-name').value = student.name;
+            document.getElementById('edit-quote').value = student.quote;
+            document.getElementById('edit-photo-url').value = student.photo;
+            document.getElementById('edit-preview-img').src = student.photo;
+            document.getElementById('edit-photo-file').value = '';
+
+            document.getElementById('edit-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function handlePhotoUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const resultUrl = e.target.result;
+                document.getElementById('edit-preview-img').src = resultUrl;
+                document.getElementById('edit-photo-url').value = resultUrl;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function saveStudentEdit(event) {
+            event.preventDefault();
+            const absen = document.getElementById('edit-student-id').value;
+            const newName = document.getElementById('edit-name').value.trim();
+            const newQuote = document.getElementById('edit-quote').value.trim();
+            const newPhoto = document.getElementById('edit-photo-url').value.trim();
+
+            const index = studentsData.findIndex(s => s.absen === absen);
+            if (index !== -1) {
+                studentsData[index].name = newName;
+                studentsData[index].quote = newQuote;
+                if (newPhoto) {
+                    studentsData[index].photo = newPhoto;
+                }
+                localStorage.setItem('xii_ipa_1_students', JSON.stringify(studentsData));
+            }
+
+            closeEditModal();
+            filterStudents();
+        }
+
+        function closeEditModal(event) {
+            if (!event || event.target.id === 'edit-modal') {
+                document.getElementById('edit-modal').classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function resetAllStudentsData() {
+            localStorage.removeItem('xii_ipa_1_students');
+            studentsData = JSON.parse(JSON.stringify(defaultStudents));
+            resetSearch();
+        }
+
+        // Dukungan tombol Keyboard ESC & Panah pada Lightbox
+        document.addEventListener('keydown', (e) => {
+            const lightboxOpen = !document.getElementById('lightbox-modal').classList.contains('hidden');
+            const editOpen = !document.getElementById('edit-modal').classList.contains('hidden');
+
+            if (e.key === 'Escape') {
+                if (lightboxOpen) closeLightbox();
+                if (editOpen) closeEditModal();
+            } else if (lightboxOpen) {
+                if (e.key === 'ArrowRight') navigateLightbox(1);
+                if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            }
+        });
+
+        // Inisialisasi Awal
+        window.addEventListener('DOMContentLoaded', () => {
+            renderGallery();
+            renderStudents();
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html
